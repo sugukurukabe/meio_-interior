@@ -27,8 +27,8 @@ export default function Header() {
     return (
         <header
             className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
-                    ? "bg-white/95 backdrop-blur-md shadow-md"
-                    : "bg-transparent"
+                ? "bg-white/95 backdrop-blur-md shadow-md"
+                : "bg-transparent"
                 }`}
         >
             {/* Top bar with contact info */}
@@ -56,11 +56,11 @@ export default function Header() {
                 <div className="flex items-center justify-between h-20">
                     {/* Logo */}
                     <Link href="/" className="flex items-center">
-                        <div className="text-[#1A2A4A]">
+                        <div className={scrolled ? "text-[#1A2A4A]" : "text-white"}>
                             <div className="text-xl font-bold tracking-wider" style={{ fontFamily: "var(--font-shippori-mincho)" }}>
                                 明王インテリア
                             </div>
-                            <div className="text-[10px] tracking-widest text-[#C9A962]">
+                            <div className={`text-[10px] tracking-widest ${scrolled ? "text-[#C9A962]" : "text-[#C9A962]"}`}>
                                 MYOO INTERIOR
                             </div>
                         </div>
@@ -72,7 +72,7 @@ export default function Header() {
                             <Link
                                 key={item.name}
                                 href={item.href}
-                                className="text-sm font-medium text-[#2D2D2D] hover:text-[#C9A962] transition-colors"
+                                className={`text-sm font-medium transition-colors hover:text-[#C9A962] ${scrolled ? "text-[#2D2D2D]" : "text-white"}`}
                             >
                                 {item.name}
                             </Link>
@@ -88,7 +88,7 @@ export default function Header() {
                     {/* Mobile menu button */}
                     <button
                         type="button"
-                        className="lg:hidden p-2 text-[#1A2A4A]"
+                        className={`lg:hidden p-2 ${scrolled ? "text-[#1A2A4A]" : "text-white"}`}
                         onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                     >
                         {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
