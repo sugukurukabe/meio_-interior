@@ -75,8 +75,8 @@ export default function Home() {
             className="object-cover"
             priority
           />
-          {/* オーバーレイ */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70" />
+          {/* オーバーレイ - より濃く */}
+          <div className="absolute inset-0 bg-black/60" />
         </div>
 
         {/* コンテンツ */}
@@ -88,16 +88,24 @@ export default function Home() {
               <span>名古屋の内装仕上げ専門会社</span>
             </div>
 
-            {/* メインコピー */}
-            <h1
-              className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 tracking-tight drop-shadow-lg"
-              style={{ fontFamily: "var(--font-shippori-mincho)" }}
-            >
-              空間に、誠意を。
-            </h1>
+            {/* メインコピー - より目立つ背景付き */}
+            <div className="bg-black/40 backdrop-blur-sm rounded-2xl py-6 px-8 mb-6 inline-block">
+              <h1
+                className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold text-white tracking-tight"
+                style={{
+                  fontFamily: "var(--font-shippori-mincho)",
+                  textShadow: "2px 2px 8px rgba(0,0,0,0.8), 0 0 30px rgba(0,0,0,0.5)"
+                }}
+              >
+                空間に、誠意を。
+              </h1>
+            </div>
 
             {/* サブコピー */}
-            <p className="text-base sm:text-lg md:text-xl text-white/90 mb-8 max-w-2xl mx-auto leading-relaxed drop-shadow">
+            <p
+              className="text-base sm:text-lg md:text-xl text-white mb-8 max-w-2xl mx-auto leading-relaxed"
+              style={{ textShadow: "1px 1px 4px rgba(0,0,0,0.8)" }}
+            >
               オフィス・店舗・公共施設の
               <br className="sm:hidden" />
               トータルインテリアソリューション
