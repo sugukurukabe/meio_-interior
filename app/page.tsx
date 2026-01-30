@@ -65,88 +65,79 @@ export default function Home() {
   return (
     <>
       {/* ヒーローセクション */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* 背景画像 */}
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#1A2A4A]">
+        {/* 背景画像 - 右側に配置 */}
         <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-gradient-to-r from-[#1A2A4A] via-[#1A2A4A]/95 to-transparent z-10" />
           <Image
             src="/images/hero.png"
             alt="内装仕上げ工事"
             fill
-            className="object-cover"
+            className="object-cover opacity-40"
             priority
           />
-          {/* オーバーレイ - より濃く */}
-          <div className="absolute inset-0 bg-black/60" />
         </div>
 
         {/* コンテンツ */}
-        <div className="relative z-10 container mx-auto px-4 sm:px-6 text-center pt-20">
+        <div className="relative z-20 container mx-auto px-4 sm:px-6 text-center pt-20">
           <div className="max-w-4xl mx-auto">
             {/* バッジ */}
-            <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm mb-6">
-              <span className="w-2 h-2 bg-[#C9A962] rounded-full animate-pulse" />
+            <div className="inline-flex items-center gap-2 bg-[#C9A962] text-white px-5 py-2 rounded-full text-sm font-medium mb-8">
+              <span className="w-2 h-2 bg-white rounded-full" />
               <span>名古屋の内装仕上げ専門会社</span>
             </div>
 
-            {/* メインコピー - より目立つ背景付き */}
-            <div className="bg-black/40 backdrop-blur-sm rounded-2xl py-6 px-8 mb-6 inline-block">
-              <h1
-                className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold text-white tracking-tight"
-                style={{
-                  fontFamily: "var(--font-shippori-mincho)",
-                  textShadow: "2px 2px 8px rgba(0,0,0,0.8), 0 0 30px rgba(0,0,0,0.5)"
-                }}
-              >
-                空間に、誠意を。
-              </h1>
-            </div>
+            {/* メインコピー */}
+            <h1
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 tracking-tight"
+              style={{ fontFamily: "var(--font-shippori-mincho)" }}
+            >
+              空間に、誠意を。
+            </h1>
 
             {/* サブコピー */}
-            <p
-              className="text-base sm:text-lg md:text-xl text-white mb-8 max-w-2xl mx-auto leading-relaxed"
-              style={{ textShadow: "1px 1px 4px rgba(0,0,0,0.8)" }}
-            >
+            <p className="text-lg sm:text-xl md:text-2xl text-gray-300 mb-10 max-w-2xl mx-auto leading-relaxed">
               オフィス・店舗・公共施設の
               <br className="sm:hidden" />
               トータルインテリアソリューション
             </p>
 
             {/* CTAボタン */}
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/contact?type=estimate"
-                className="bg-[#C9A962] hover:bg-[#B89852] text-white font-bold text-base px-6 sm:px-8 py-4 rounded-lg transition-all shadow-lg hover:shadow-xl"
+                className="bg-[#C9A962] hover:bg-[#B89852] text-white font-bold text-lg px-8 py-4 rounded-lg transition-all shadow-lg"
               >
                 無料見積もり依頼
               </Link>
               <Link
                 href="/services"
-                className="bg-white/95 hover:bg-white text-[#1A2A4A] font-bold text-base px-6 sm:px-8 py-4 rounded-lg transition-all shadow-lg hover:shadow-xl"
+                className="bg-white hover:bg-gray-100 text-[#1A2A4A] font-bold text-lg px-8 py-4 rounded-lg transition-all shadow-lg"
               >
                 サービス詳細
               </Link>
             </div>
 
             {/* 実績数 */}
-            <div className="mt-12 sm:mt-16 flex flex-wrap justify-center gap-6 sm:gap-12">
+            <div className="mt-16 flex flex-wrap justify-center gap-8 sm:gap-16">
               <div className="text-center">
-                <p className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#C9A962]">20+</p>
-                <p className="text-xs sm:text-sm text-white/80">年の実績</p>
+                <p className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#C9A962]">20+</p>
+                <p className="text-sm text-gray-400 mt-1">年の実績</p>
               </div>
               <div className="text-center">
-                <p className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#C9A962]">500+</p>
-                <p className="text-xs sm:text-sm text-white/80">施工件数</p>
+                <p className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#C9A962]">500+</p>
+                <p className="text-sm text-gray-400 mt-1">施工件数</p>
               </div>
               <div className="text-center">
-                <p className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#C9A962]">100%</p>
-                <p className="text-xs sm:text-sm text-white/80">お客様満足</p>
+                <p className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#C9A962]">100%</p>
+                <p className="text-sm text-gray-400 mt-1">お客様満足</p>
               </div>
             </div>
           </div>
 
           {/* スクロールインジケーター */}
-          <div className="absolute bottom-6 sm:bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-            <ChevronDown className="text-white/70" size={28} />
+          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <ChevronDown className="text-white/60" size={32} />
           </div>
         </div>
       </section>
