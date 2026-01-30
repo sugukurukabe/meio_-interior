@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import {
   Phone,
   ArrowRight,
@@ -52,12 +53,12 @@ const reasons = [
 
 // 施工実績サンプル
 const works = [
-  { category: "オフィス", title: "オフィスビル改装工事", location: "名古屋市中区" },
-  { category: "店舗", title: "カフェ新装工事", location: "名古屋市中村区" },
-  { category: "公共施設", title: "コミュニティセンター", location: "名古屋市天白区" },
-  { category: "商業施設", title: "物販店舗内装", location: "名古屋市緑区" },
-  { category: "医療施設", title: "クリニック内装", location: "名古屋市昭和区" },
-  { category: "教育施設", title: "学習塾改装", location: "名古屋市千種区" },
+  { category: "オフィス", title: "オフィスビル改装工事", location: "名古屋市中区", image: "/images/office.png" },
+  { category: "店舗", title: "カフェ新装工事", location: "名古屋市中村区", image: "/images/shop.png" },
+  { category: "公共施設", title: "コミュニティセンター", location: "名古屋市天白区", image: "/images/public.png" },
+  { category: "商業施設", title: "物販店舗内装", location: "名古屋市緑区", image: "/images/commercial.png" },
+  { category: "医療施設", title: "クリニック内装", location: "名古屋市昭和区", image: "/images/medical.png" },
+  { category: "オフィス", title: "IT企業オフィス", location: "名古屋市千種区", image: "/images/office.png" },
 ];
 
 export default function Home() {
@@ -65,58 +66,79 @@ export default function Home() {
     <>
       {/* ヒーローセクション */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* 背景 */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#1A2A4A] via-[#2A3A5A] to-[#1A2A4A]">
-          {/* パターンオーバーレイ */}
-          <div
-            className="absolute inset-0 opacity-10"
-            style={{
-              backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23C9A962' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-            }}
+        {/* 背景画像 */}
+        <div className="absolute inset-0">
+          <Image
+            src="/images/hero.png"
+            alt="内装仕上げ工事"
+            fill
+            className="object-cover"
+            priority
           />
+          {/* オーバーレイ */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70" />
         </div>
 
         {/* コンテンツ */}
-        <div className="relative z-10 container mx-auto px-6 text-center">
+        <div className="relative z-10 container mx-auto px-4 sm:px-6 text-center pt-20">
           <div className="max-w-4xl mx-auto">
+            {/* バッジ */}
+            <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm mb-6">
+              <span className="w-2 h-2 bg-[#C9A962] rounded-full animate-pulse" />
+              <span>名古屋の内装仕上げ専門会社</span>
+            </div>
+
             {/* メインコピー */}
             <h1
-              className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 tracking-tight"
+              className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 tracking-tight drop-shadow-lg"
               style={{ fontFamily: "var(--font-shippori-mincho)" }}
             >
               空間に、誠意を。
             </h1>
 
             {/* サブコピー */}
-            <p className="text-lg md:text-xl text-gray-300 mb-4">
-              名古屋の内装仕上げ専門会社
-            </p>
-            <p className="text-base md:text-lg text-gray-400 mb-12 max-w-2xl mx-auto">
+            <p className="text-base sm:text-lg md:text-xl text-white/90 mb-8 max-w-2xl mx-auto leading-relaxed drop-shadow">
               オフィス・店舗・公共施設の
               <br className="sm:hidden" />
               トータルインテリアソリューション
             </p>
 
             {/* CTAボタン */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
               <Link
                 href="/contact?type=estimate"
-                className="btn btn-primary text-base px-8 py-4"
+                className="bg-[#C9A962] hover:bg-[#B89852] text-white font-bold text-base px-6 sm:px-8 py-4 rounded-lg transition-all shadow-lg hover:shadow-xl"
               >
                 無料見積もり依頼
               </Link>
               <Link
                 href="/services"
-                className="btn btn-outline border-white text-white hover:bg-white hover:text-[#1A2A4A] text-base px-8 py-4"
+                className="bg-white/95 hover:bg-white text-[#1A2A4A] font-bold text-base px-6 sm:px-8 py-4 rounded-lg transition-all shadow-lg hover:shadow-xl"
               >
                 サービス詳細
               </Link>
             </div>
+
+            {/* 実績数 */}
+            <div className="mt-12 sm:mt-16 flex flex-wrap justify-center gap-6 sm:gap-12">
+              <div className="text-center">
+                <p className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#C9A962]">20+</p>
+                <p className="text-xs sm:text-sm text-white/80">年の実績</p>
+              </div>
+              <div className="text-center">
+                <p className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#C9A962]">500+</p>
+                <p className="text-xs sm:text-sm text-white/80">施工件数</p>
+              </div>
+              <div className="text-center">
+                <p className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#C9A962]">100%</p>
+                <p className="text-xs sm:text-sm text-white/80">お客様満足</p>
+              </div>
+            </div>
           </div>
 
           {/* スクロールインジケーター */}
-          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-            <ChevronDown className="text-white/50" size={32} />
+          <div className="absolute bottom-6 sm:bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <ChevronDown className="text-white/70" size={28} />
           </div>
         </div>
       </section>
@@ -175,7 +197,7 @@ export default function Home() {
                     {service.icon}
                   </span>
                 </div>
-                <h3 className="text-sm font-medium text-[#1A2A4A]">
+                <h3 className="text-sm font-semibold text-[#1A2A4A]">
                   {service.name}
                 </h3>
               </div>
@@ -187,8 +209,8 @@ export default function Home() {
               href="/services"
               className="inline-flex items-center gap-2 text-[#1A2A4A] font-medium hover:text-[#C9A962] transition-colors"
             >
-              サービス詳細を見る
-              <ArrowRight size={18} />
+              すべてのサービスを見る
+              <ArrowRight size={16} />
             </Link>
           </div>
         </div>
@@ -199,38 +221,39 @@ export default function Home() {
         <div className="container mx-auto">
           <div className="section-title">
             <span className="section-title-en">WHY CHOOSE US</span>
-            <h2 className="section-title-jp">選ばれる3つの理由</h2>
+            <h2 className="section-title-jp">選ばれる理由</h2>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             {reasons.map((reason) => {
               const Icon = reason.icon;
               return (
-                <div
-                  key={reason.number}
-                  className="relative bg-[#F5F5F3] rounded-2xl p-8 overflow-hidden"
-                >
-                  {/* 番号 */}
-                  <div className="absolute top-4 right-4 text-6xl font-bold text-[#C9A962]/10">
+                <div key={reason.number} className="text-center">
+                  <div className="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-[#C9A962] to-[#D9B972] rounded-2xl flex items-center justify-center shadow-lg">
+                    <Icon className="text-white" size={36} />
+                  </div>
+                  <div className="text-[#C9A962] text-sm font-bold mb-2">
                     {reason.number}
                   </div>
-
-                  <div className="relative">
-                    <div className="w-14 h-14 bg-[#1A2A4A] rounded-xl flex items-center justify-center mb-6">
-                      <Icon className="text-[#C9A962]" size={28} />
-                    </div>
-
-                    <h3 className="text-xl font-bold text-[#1A2A4A] mb-4">
-                      {reason.title}
-                    </h3>
-
-                    <p className="text-gray-600 text-sm leading-relaxed">
-                      {reason.description}
-                    </p>
-                  </div>
+                  <h3 className="text-xl font-bold text-[#1A2A4A] mb-4">
+                    {reason.title}
+                  </h3>
+                  <p className="text-gray-600 text-sm leading-relaxed">
+                    {reason.description}
+                  </p>
                 </div>
               );
             })}
+          </div>
+
+          <div className="text-center mt-10">
+            <Link
+              href="/about"
+              className="inline-flex items-center gap-2 text-[#1A2A4A] font-medium hover:text-[#C9A962] transition-colors"
+            >
+              詳しく見る
+              <ArrowRight size={16} />
+            </Link>
           </div>
         </div>
       </section>
@@ -243,46 +266,29 @@ export default function Home() {
             <h2 className="section-title-jp">施工実績</h2>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
             {works.map((work, index) => (
               <div
                 key={index}
                 className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all group"
               >
-                {/* プレースホルダー画像 */}
-                <div className="aspect-[4/3] bg-gradient-to-br from-[#1A2A4A] to-[#2A3A5A] relative overflow-hidden">
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    {work.category === "オフィス" && (
-                      <Building2 className="text-white/30" size={64} />
-                    )}
-                    {work.category === "店舗" && (
-                      <Store className="text-white/30" size={64} />
-                    )}
-                    {work.category === "公共施設" && (
-                      <Landmark className="text-white/30" size={64} />
-                    )}
-                    {work.category === "商業施設" && (
-                      <Warehouse className="text-white/30" size={64} />
-                    )}
-                    {work.category === "医療施設" && (
-                      <Building2 className="text-white/30" size={64} />
-                    )}
-                    {work.category === "教育施設" && (
-                      <Building2 className="text-white/30" size={64} />
-                    )}
-                  </div>
-                  {/* オーバーレイ */}
-                  <div className="absolute inset-0 bg-[#C9A962]/0 group-hover:bg-[#C9A962]/20 transition-colors" />
+                <div className="aspect-[4/3] relative overflow-hidden">
+                  <Image
+                    src={work.image}
+                    alt={work.title}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                 </div>
-
                 <div className="p-5">
-                  <span className="inline-block px-3 py-1 bg-[#1A2A4A]/10 text-[#1A2A4A] text-xs font-medium rounded-full mb-2">
+                  <span className="inline-block px-3 py-1 bg-[#1A2A4A]/10 text-[#1A2A4A] text-xs font-medium rounded-full mb-3">
                     {work.category}
                   </span>
-                  <h3 className="font-bold text-[#1A2A4A] mb-1">
+                  <h3 className="font-semibold text-[#1A2A4A] mb-1">
                     {work.title}
                   </h3>
-                  <p className="text-sm text-gray-500">{work.location}</p>
+                  <p className="text-xs text-gray-500">{work.location}</p>
                 </div>
               </div>
             ))}
@@ -293,14 +299,10 @@ export default function Home() {
               href="/works"
               className="inline-flex items-center gap-2 text-[#1A2A4A] font-medium hover:text-[#C9A962] transition-colors"
             >
-              すべての実績を見る
-              <ArrowRight size={18} />
+              すべての施工実績を見る
+              <ArrowRight size={16} />
             </Link>
           </div>
-
-          <p className="text-center text-sm text-gray-500 mt-4">
-            ※実績写真はお客様の許可を得て掲載しております
-          </p>
         </div>
       </section>
 
@@ -315,30 +317,30 @@ export default function Home() {
           <div className="max-w-4xl mx-auto">
             <div className="bg-[#F5F5F3] rounded-2xl p-8 md:p-12">
               <div className="flex flex-col md:flex-row gap-8 items-center">
-                {/* 代表写真プレースホルダー */}
-                <div className="w-48 h-48 bg-gradient-to-br from-[#1A2A4A] to-[#2A3A5A] rounded-2xl flex items-center justify-center shrink-0">
-                  <Users className="text-white/30" size={64} />
+                <div className="w-48 h-48 relative rounded-2xl overflow-hidden shrink-0 shadow-lg">
+                  <Image
+                    src="/images/hero.png"
+                    alt="代表取締役 笹木 博光"
+                    fill
+                    className="object-cover"
+                  />
                 </div>
-
                 <div className="flex-1">
                   <h3
-                    className="text-2xl font-bold text-[#1A2A4A] mb-4"
+                    className="text-xl md:text-2xl font-bold text-[#1A2A4A] mb-6"
                     style={{ fontFamily: "var(--font-shippori-mincho)" }}
                   >
                     「お客様の空間づくりに、
                     <br />
                     全力で向き合います」
                   </h3>
-
                   <p className="text-gray-600 leading-relaxed mb-6">
-                    私たちは「内装仕上げのプロ」として、お客様の理想の空間を実現するために日々精進しております。
-                    <br />
-                    <br />
-                    誠実な仕事、確かな品質、そしてスピード。これが私たちの約束です。
+                    私たちは「内装仕上げのプロ」として、お客様の理想の空間を実現するために日々精進しております。オフィス、店舗、公共施設など、あらゆる空間の内装工事を手がけてまいりました。誠実な仕事、確かな品質、そしてスピード。これが私たちの約束です。
                   </p>
-
                   <div className="text-right">
-                    <p className="text-sm text-gray-500 mb-1">代表取締役</p>
+                    <p className="text-sm text-gray-500 mb-1">
+                      有限会社明王インテリア 代表取締役
+                    </p>
                     <p
                       className="text-xl font-bold text-[#1A2A4A]"
                       style={{ fontFamily: "var(--font-shippori-mincho)" }}
@@ -354,79 +356,71 @@ export default function Home() {
       </section>
 
       {/* 協力業者募集セクション */}
-      <section className="section bg-[#1A2A4A] text-white">
+      <section className="section bg-gradient-to-br from-[#1A2A4A] to-[#2A3A5A]">
         <div className="container mx-auto text-center">
           <div className="max-w-2xl mx-auto">
-            <span className="block text-sm font-medium tracking-widest text-[#C9A962] mb-4">
+            <span className="inline-block text-sm font-medium tracking-widest text-[#C9A962] mb-4">
               PARTNER
             </span>
             <h2
-              className="text-2xl md:text-3xl font-bold mb-6"
+              className="text-2xl md:text-3xl font-bold text-white mb-6"
               style={{ fontFamily: "var(--font-shippori-mincho)" }}
             >
               一緒に最高の仕事をしませんか？
             </h2>
-
-            <p className="text-gray-300 mb-4">
-              クロス職人・床職人・LGS職人など、
-              <br className="sm:hidden" />
-              内装仕上げに関わる職人さんを募集しています。
+            <p className="text-gray-300 mb-8">
+              内装仕上げ職人さんを募集しています。
+              <br />
+              クロス、床、LGS、ボードなど、経験者の方大歓迎です。
             </p>
-
-            <p className="text-gray-400 text-sm mb-8">
-              安定した案件と、良好なパートナーシップをお約束します。
-            </p>
-
             <Link
               href="/partner"
-              className="btn bg-[#C9A962] text-[#1A2A4A] hover:bg-[#D9B972] px-8 py-4"
+              className="inline-flex items-center gap-2 bg-[#C9A962] text-white font-bold px-8 py-4 rounded-lg hover:bg-[#B89852] transition-colors shadow-lg"
             >
-              募集詳細・応募はこちら
+              協力業者募集の詳細
+              <ArrowRight size={18} />
             </Link>
           </div>
         </div>
       </section>
 
-      {/* CTAセクション */}
+      {/* お問い合わせCTAセクション */}
       <section className="section bg-gradient-to-r from-[#C9A962] to-[#D9B972]">
         <div className="container mx-auto text-center">
-          <div className="max-w-2xl mx-auto">
-            <h2
-              className="text-2xl md:text-3xl font-bold text-[#1A2A4A] mb-4"
-              style={{ fontFamily: "var(--font-shippori-mincho)" }}
-            >
-              まずは、お気軽にご相談ください
-            </h2>
+          <h2
+            className="text-2xl md:text-3xl font-bold text-[#1A2A4A] mb-4"
+            style={{ fontFamily: "var(--font-shippori-mincho)" }}
+          >
+            まずはお気軽にご相談ください
+          </h2>
+          <p className="text-[#1A2A4A]/80 mb-6">
+            お見積もり・現地調査は無料です
+          </p>
 
-            <p className="text-[#1A2A4A]/80 mb-2">
-              お見積もり無料・現地調査無料
-            </p>
-            <p className="text-[#1A2A4A]/70 text-sm mb-8">
-              内装工事のことなら何でもご相談ください
-            </p>
-
+          <div className="flex flex-col items-center gap-6">
             <a
               href="tel:052-680-7707"
-              className="inline-flex items-center gap-3 text-3xl md:text-4xl font-bold text-[#1A2A4A] mb-2"
+              className="flex items-center gap-3 text-[#1A2A4A]"
             >
-              <Phone size={32} />
-              052-680-7707
+              <Phone size={28} />
+              <span className="text-3xl md:text-4xl font-bold">
+                052-680-7707
+              </span>
             </a>
-
-            <p className="text-[#1A2A4A]/60 text-sm mb-8">
+            <p className="text-sm text-[#1A2A4A]/70">
               営業時間: 平日 9:00〜18:00
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-4 mt-4">
               <Link
                 href="/contact?type=estimate"
-                className="btn bg-[#1A2A4A] text-white hover:bg-[#15223C] px-8 py-4"
+                className="bg-[#1A2A4A] text-white font-bold px-8 py-4 rounded-lg hover:bg-[#15223C] transition-colors shadow-lg"
               >
                 無料見積もり依頼
               </Link>
               <Link
                 href="/contact"
-                className="btn bg-white text-[#1A2A4A] hover:bg-gray-100 px-8 py-4"
+                className="bg-white text-[#1A2A4A] font-bold px-8 py-4 rounded-lg hover:bg-gray-100 transition-colors shadow-lg"
               >
                 お問い合わせ
               </Link>
